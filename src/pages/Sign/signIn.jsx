@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 
-import { TextField, Button, Grid } from '@material-ui/core';
+import {
+  TextField, Button, Grid,
+} from '@material-ui/core';
 
-import { setUserSession } from '../../store/modules/user/actions';
+import { setUserSession } from '../../store/modules/auth/actions';
 
 import GoogleIcon from '../../assets/icon/google';
 
@@ -21,7 +22,6 @@ const errorsMessages = {
 const SignIn = ({ changePage }) => {
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
-  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -40,7 +40,7 @@ const SignIn = ({ changePage }) => {
       .validate({ email, password }, {
         abortEarly: false,
       })
-      .then((values) => {
+      .then(async (values) => {
         // Example of validation
         // Should be a request
         const thisUser = users.filter((user) => user.email === values.email)[0];
@@ -54,8 +54,6 @@ const SignIn = ({ changePage }) => {
         }
 
         dispatch(setUserSession(thisUser));
-        history.push('/');
-
         return true;
       })
       .catch((yupErrors) => {
