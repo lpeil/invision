@@ -1,13 +1,17 @@
 .sign-container {
   padding: 75px 0;
 
+  .title {
+    margin-top: 50px;
+  }
+
   form {
     display: flex;
     align-items: center;
     flex-direction: column;
 
     width: 100%;
-    padding-top: 50px;
+    padding-top: 10px;
 
     .MuiTextField-root, p {
       margin: 9px 0;
@@ -19,7 +23,9 @@
 
     .MuiButton-root {
       width: 175px;
-      height: 45px;
+      max-width: 100%;
+      height: min-content;
+      min-height: 45px;
       margin-top: 9px;
 
       color: $color-white;
@@ -73,7 +79,9 @@
 
   .MuiButton-root.google {
     width: 263px;
-    height: 45px;
+    max-width: 100%;
+    height: min-content;
+    min-height: 45px;
     margin-bottom: 50px;
 
     color: $color-black;
@@ -85,11 +93,30 @@
   }
 
   .to-sign-up {
+    padding: 0;
+
     color: $color-primary;
     border: none;
     cursor: pointer;
     outline: none;
     background: none;
     text-decoration: underline;
+  }
+
+  .already {
+    margin-top: 20px;
+  }
+}
+
+.invision-logo {
+  position: absolute;
+  top: 120px;
+  right: 124px;
+}
+
+@media (max-width: 960px) {
+  .invision-logo {
+    top: 20px;
+    right: 24px;
   }
 }
