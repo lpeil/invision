@@ -13,8 +13,8 @@ export const history = createBrowserHistory();
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <PrivateRoute path="/" exact component={HomePage} />
-      <Route path="/sign" exact component={SignPage} />
+      <PrivateRoute path="/" auth exact component={HomePage} />
+      <PrivateRoute path="/sign" exact component={SignPage} />
       <Route path="*" component={NotFoundPage} />
     </Switch>
   </BrowserRouter>

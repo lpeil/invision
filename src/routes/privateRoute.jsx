@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: Component, auth, ...rest }) => {
   const user = useSelector((state) => state.user);
 
   return (
     <Route
       {...rest}
-      render={(props) => (user?.id ? (
+      render={(props) => (((user?.id && auth) || (!user?.id && !auth)) ? (
         <Component {...props} />
       ) : (
         <Redirect
-          to={{ pathname: '/sign', state: { from: props.location } }}
+          to={{ pathname: auth ? '/sign' : '/', state: { from: props.location } }}
         />
       ))}
     />
@@ -23,9 +23,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 PrivateRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
+  auth: PropTypes.bool,
 };
 
 PrivateRoute.defaultProps = {
+  auth: false,
   location: {},
 };
 
