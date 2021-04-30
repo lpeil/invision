@@ -2,6 +2,7 @@
 
 .font {
   color: $color-gray;
+  margin: 0;
   font-family: 'Muli', sans-serif;
 
   &.font-size-1 {
@@ -40,7 +41,7 @@
   }
 
   &.heavy {
-    font-weight: black;
+    font-weight: bolder;
   }
 
   &.color-black {
@@ -49,5 +50,9 @@
 
   &.color-primary {
     color: $color-primary;
+  }
+
+  &.color-white {
+    color: $color-white;
   }
 }
