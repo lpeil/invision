@@ -1,3 +1,12 @@
+# Inivision
+
+## Run locally
+
+```
+  make install
+  make run
+```
+
 ## Available Scripts
 ### `make run`
 
@@ -17,3 +26,8 @@ Run eslint into the application.
 ### `make clean`
 
 Remove node_modules folder;
+
+## Links
+
+[AdobeXD](https://xd.adobe.com/view/733508c5-4bfb-4dee-62c1-b3188a9bba84-0504/screen/a9f108a4-c475-48ab-b6a4-ea20ef16e4b7/specs/) \
+[URL](https://peil.dev/invision)
