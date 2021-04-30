@@ -1,0 +1,53 @@
+@import url('https://use.typekit.net/xlx3ush.css');
+
+.font {
+  color: $color-gray;
+  font-family: 'Muli', sans-serif;
+
+  &.font-size-1 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  &.font-size-2 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &.font-size-3 {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  &.font-size-4 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  &.font-size-5 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  &.font-size-6 {
+    font-size: 35px;
+    line-height: 48px;
+  }
+
+  &.bold {
+    font-weight: bold;
+  }
+
+  &.heavy {
+    font-weight: black;
+  }
+
+  &.color-black {
+    color: $color-black;
+  }
+
+  &.color-primary {
+    color: $color-primary;
+  }
+}
