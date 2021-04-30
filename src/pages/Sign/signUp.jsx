@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
@@ -8,7 +7,7 @@ import * as yup from 'yup';
 import { TextField, Button } from '@material-ui/core';
 
 import { createNewUser } from '../../store/modules/users/actions';
-import { setUserSession } from '../../store/modules/user/actions';
+import { setUserSession } from '../../store/modules/auth/actions';
 
 import GoogleIcon from '../../assets/icon/google';
 
@@ -22,7 +21,6 @@ const errorsMessages = {
 const SignIn = ({ changePage }) => {
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
-  const history = useHistory();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,7 +41,7 @@ const SignIn = ({ changePage }) => {
       .validate({ name, email, password }, {
         abortEarly: false,
       })
-      .then(async (values) => {
+      .then((values) => {
         // Example of validation
         // Should be a request
 
@@ -56,10 +54,8 @@ const SignIn = ({ changePage }) => {
           ...values,
         };
 
-        await dispatch(createNewUser(thisUser));
-        await dispatch(setUserSession(thisUser));
-
-        history.push('/');
+        dispatch(createNewUser(thisUser));
+        dispatch(setUserSession(thisUser));
 
         return true;
       })
