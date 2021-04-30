@@ -11,7 +11,7 @@ const CarouselItem = ({ image, title, description }) => (
     justify="center"
     alignItems="center"
   >
-    <Grid item>
+    <Grid container item justify="center">
       <img src={image} alt={title} />
     </Grid>
     <Grid item container justify="center">

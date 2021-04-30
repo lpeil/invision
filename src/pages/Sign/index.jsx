@@ -30,7 +30,7 @@ const Sign = () => {
             Invision
           </h1>
           <Grid
-            md={6}
+            lg={6}
             xs={10}
             item
             container
