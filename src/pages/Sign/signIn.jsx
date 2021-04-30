@@ -1,12 +1,72 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as yup from 'yup';
 
 import { TextField, Button, Grid } from '@material-ui/core';
+
+import { setUserSession } from '../../store/modules/user/actions';
+
 import GoogleIcon from '../../assets/icon/google';
 
+const errorsMessages = {
+  email: 'This e-mail is not a valid email',
+  empty: 'This field can not be empty',
+  notUser: 'This email is incorrect',
+  password: 'This password is incorrect',
+};
+
 const SignIn = ({ changePage }) => {
+  const users = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrors({});
+
+    const schema = yup.object().shape({
+      email: yup
+        .string(errorsMessages.email).email(errorsMessages.email).required(errorsMessages.empty),
+      password: yup.string().required(errorsMessages.empty),
+    });
+
+    schema
+      .validate({ email, password }, {
+        abortEarly: false,
+      })
+      .then((values) => {
+        // Example of validation
+        // Should be a request
+        const thisUser = users.filter((user) => user.email === values.email)[0];
+
+        if (!thisUser) {
+          return setErrors({ email: errorsMessages.notUser });
+        }
+
+        if (thisUser.password !== values.password) {
+          return setErrors({ password: errorsMessages.password });
+        }
+
+        dispatch(setUserSession(thisUser));
+        history.push('/');
+
+        return true;
+      })
+      .catch((yupErrors) => {
+        const formErros = {};
+        // eslint-disable-next-line no-restricted-syntax
+        for (const yupError of yupErrors.inner) {
+          formErros[yupError.path] = yupError.message;
+        }
+
+        setErrors(formErros);
+      });
   };
 
   return (
@@ -18,16 +78,24 @@ const SignIn = ({ changePage }) => {
         <TextField
           label="Email"
           fullWidth
+          value={email}
+          error={!!errors?.email}
+          helperText={errors?.email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           type="password"
           label="Password"
           fullWidth
+          value={password}
+          error={!!errors?.password}
+          helperText={errors?.password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Grid container direction="row-reverse">
           <p className="font font-size-1">Forgot password?</p>
         </Grid>
-        <Button variant="contained">Sign In</Button>
+        <Button type="submit" variant="contained">Sign In</Button>
       </form>
       <div className="divider">
         <div />

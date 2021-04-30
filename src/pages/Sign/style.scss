@@ -45,9 +45,9 @@
       padding: 11px 20px;
     }
 
-    .MuiInput-underline,
-    .MuiInput-underline::before,
-    .MuiInput-underline::after,
+    .MuiInput-underline:not(.Mui-error),
+    .MuiInput-underline:not(.Mui-error)::before,
+    .MuiInput-underline:not(.Mui-error)::after,
     .MuiInput-underline.MuiFocused {
       border-color: $color-gray!important;
     }
