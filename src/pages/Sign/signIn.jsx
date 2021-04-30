@@ -11,7 +11,7 @@ const SignIn = ({ changePage }) => {
 
   return (
     <>
-      <p className="font font-size-5">
+      <p className="font font-size-5 title text-center">
         Welcome to Invision
       </p>
       <form onSubmit={handleSubmit}>
@@ -40,7 +40,7 @@ const SignIn = ({ changePage }) => {
       >
         Sign in with Google
       </Button>
-      <div className="font font-size-1">
+      <div className="font font-size-1 text-center">
         <span>
           New
           {' '}
@@ -50,7 +50,7 @@ const SignIn = ({ changePage }) => {
         {' '}
         <button
           type="button"
-          className="to-sign-up"
+          className="to-sign-up font font-size-1"
           onClick={() => changePage('signUp')}
         >
           Create Account

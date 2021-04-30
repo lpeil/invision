@@ -26,15 +26,12 @@ const Sign = () => {
           direction="column"
           className="sign-page"
         >
-          <Grid container item direction="row-reverse">
-            <Grid item>
-              <h1 className="font font-size-6 color-black heavy">
-                Invision
-              </h1>
-            </Grid>
-          </Grid>
+          <h1 className="font font-size-6 color-black heavy invision-logo">
+            Invision
+          </h1>
           <Grid
-            xs={6}
+            md={6}
+            xs={10}
             item
             container
             alignItems="center"
