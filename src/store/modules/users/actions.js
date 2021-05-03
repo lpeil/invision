@@ -4,3 +4,9 @@ export function createNewUser(user) {
     user,
   };
 }
+
+export function clearUsers() {
+  return {
+    type: '@users/CLEAR',
+  };
+}
