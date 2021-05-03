@@ -12,4 +12,8 @@ const App = () => (
   </Provider>
 );
 
+if (window.Cypress) {
+  window.store = store;
+}
+
 export default App;
