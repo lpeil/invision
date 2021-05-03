@@ -4,7 +4,9 @@
       "empty": "This field can not be empty",
       "invalidEmail": "This e-mail is not a valid email",
       "nonexistentEmail": "This email is incorrect",
-      "invalidPassword": "This password is incorrect"
+      "invalidPassword": "This password is incorrect",
+      "passwordMin": "This password must have at least 6 characters",
+      "emailUsed": "This email has already been used"
     },
     "baseURL": "http://localhost:3000/"
   }
