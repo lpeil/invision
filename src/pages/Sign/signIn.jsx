@@ -74,6 +74,7 @@ const SignIn = ({ changePage }) => {
       </p>
       <form onSubmit={handleSubmit}>
         <TextField
+          name="Email"
           label="Email"
           fullWidth
           value={email}
@@ -82,6 +83,7 @@ const SignIn = ({ changePage }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
+          name="password"
           type="password"
           label="Password"
           fullWidth
