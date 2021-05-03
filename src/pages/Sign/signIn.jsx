@@ -74,7 +74,7 @@ const SignIn = ({ changePage }) => {
       </p>
       <form onSubmit={handleSubmit}>
         <TextField
-          name="Email"
+          name="email"
           label="Email"
           fullWidth
           value={email}
