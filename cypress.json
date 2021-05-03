@@ -1,0 +1,11 @@
+{
+  "env": {
+    "errors": {
+      "empty": "This field can not be empty",
+      "invalidEmail": "This e-mail is not a valid email",
+      "nonexistentEmail": "This email is incorrect",
+      "invalidPassword": "This password is incorrect"
+    },
+    "baseURL": "http://localhost:3000/"
+  }
+}
