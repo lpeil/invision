@@ -26,6 +26,9 @@ Run eslint into the application.
 ### `make clean`
 
 Remove node_modules folder;
+### `make test`
+
+Run cypress tests
 
 ## Links
 
