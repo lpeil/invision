@@ -10,5 +10,8 @@ install: ;@echo "Installing....."; \
 build: ;@echo "Installing....."; \
 	npm run build
 
+test: ;@echo "Installing....."; \
+	npm run cypress
+
 clean : ;
 	rm -rf node_modules
